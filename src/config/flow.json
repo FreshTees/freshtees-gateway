@@ -1,0 +1,289 @@
+{
+  "designToolUrl": "https://freshtees.com.au",
+  "calendlyUrl": "https://calendly.com/your-link",
+  "privacyPolicyUrl": "https://freshtees.com.au/privacy-policy",
+  "smallOrderThreshold": 50,
+  "questions": [
+    {
+      "id": "purpose",
+      "question": "What is this for?",
+      "type": "single",
+      "options": [
+        { "value": "brand_resale", "label": "Brand / Resale" },
+        { "value": "tour_music", "label": "Tour / Music Artist" },
+        { "value": "sports_club", "label": "Sports Club" },
+        { "value": "corporate_uniform", "label": "Corporate / Uniform" },
+        { "value": "event_promo", "label": "Event / Promo" },
+        { "value": "agency_client", "label": "Agency Client" },
+        { "value": "other", "label": "Other" }
+      ]
+    },
+    {
+      "id": "quantity",
+      "question": "How many units do you need?",
+      "type": "quantity",
+      "options": [
+        { "value": "1-24", "label": "1 – 24", "max": 24 },
+        { "value": "25-49", "label": "25 – 49", "max": 49 },
+        { "value": "50-99", "label": "50 – 99", "min": 50 },
+        { "value": "100-249", "label": "100 – 249", "min": 100 },
+        { "value": "250+", "label": "250+", "min": 250 },
+        { "value": "unsure", "label": "Not sure yet" }
+      ]
+    },
+    {
+      "id": "garments",
+      "question": "What kind of garments are you looking for?",
+      "type": "single",
+      "options": [
+        { "value": "tees", "label": "Tees" },
+        { "value": "sweats", "label": "Sweats / Hoodies" },
+        { "value": "hats", "label": "Hats" },
+        { "value": "corporate", "label": "Corporate Wear" },
+        { "value": "work_wear", "label": "Work Wear" },
+        { "value": "totes", "label": "Totes" },
+        { "value": "other", "label": "Other merch (bottles, pens, etc.)" },
+        { "value": "unsure", "label": "Unsure" }
+      ]
+    },
+    {
+      "id": "artwork",
+      "question": "Do you have final print-ready artwork? (e.g. AI, SVG, PNG)",
+      "type": "single",
+      "options": [
+        { "value": "yes", "label": "Yes" },
+        { "value": "partially", "label": "Partially" },
+        { "value": "no", "label": "No" }
+      ]
+    },
+    {
+      "id": "placements",
+      "question": "Do you know placements, sizes, and specs?",
+      "type": "single",
+      "options": [
+        { "value": "yes", "label": "Yes" },
+        { "value": "partially", "label": "Partially" },
+        { "value": "no", "label": "No" }
+      ]
+    },
+    {
+      "id": "budget",
+      "question": "Do you have a budget in mind?",
+      "type": "single",
+      "options": [
+        { "value": "yes", "label": "Yes" },
+        { "value": "no", "label": "No" },
+        { "value": "exploring", "label": "Just exploring" }
+      ]
+    }
+  ],
+  "bulkQualifiedRules": {
+    "artwork": ["yes"],
+    "placements": ["yes", "partially"],
+    "budget": ["yes"]
+  },
+  "educationContent": {
+    "title": "Almost there",
+    "body": "To give you an accurate quote and make the most of a call, it helps to have a few things sorted first: print-ready artwork (AI, SVG or PNG), an idea of placements and sizes, and a rough budget. We've got guides and tips on our site—check them out, then come back when you're ready. Or leave your details below and we'll send you a quick checklist and follow up when the time's right."
+  },
+  "educationTopics": {
+    "artwork": {
+      "title": "Get your artwork print-ready",
+      "body": "We need final art in AI, SVG or high-res PNG. Here's how to get there.",
+      "links": [
+        { "label": "File formats we accept", "url": "https://freshtees.com.au/artwork-formats" },
+        { "label": "Preparing your design for print", "url": "https://freshtees.com.au/artwork-guide" }
+      ]
+    },
+    "placements": {
+      "title": "Placements, sizes and specs",
+      "body": "Knowing where the print goes and what sizes you need speeds up quoting.",
+      "links": [
+        { "label": "Placement guide", "url": "https://freshtees.com.au/placements" }
+      ]
+    },
+    "budget": {
+      "title": "Rough budget in mind",
+      "body": "Having a ballpark helps us suggest the right options.",
+      "links": [
+        { "label": "How pricing works", "url": "https://freshtees.com.au/pricing" }
+      ]
+    }
+  },
+  "workflowGate": {
+    "smallOrderMessage": "Orders under 50 units per product must be placed via our website."
+  },
+  "productionTimeline": {
+    "standard": "7–10 business days (begins after payment + spec sheet approval)",
+    "rushOptions": [
+      { "label": "3–5 business days", "surcharge": "+20%" },
+      { "label": "1–2 business days", "surcharge": "+40%" }
+    ],
+    "rushNote": "Rush subject to production capacity."
+  },
+  "quoteProcessSteps": [
+    "Complete intake received",
+    "System-generated quote issued (you accept the quote)",
+    "Invoice auto-generated (payment required before production)",
+    "Spec sheet generated (your approval required)"
+  ],
+  "screenPrintPricing": {
+    "baseline": "1 colour, white garments. Pricing assumes supplied vector artwork; standard print size applies.",
+    "tiers": [
+      { "min": 50, "max": 124, "pricePerUnit": 5.75 },
+      { "min": 125, "max": 249, "pricePerUnit": 3.90 },
+      { "min": 250, "max": 499, "pricePerUnit": 2.90 },
+      { "min": 500, "max": 999, "pricePerUnit": 2.00 },
+      { "min": 1000, "max": null, "pricePerUnit": 1.75 }
+    ]
+  },
+  "quantityRangeMap": {
+    "50-99": { "min": 50, "max": 124 },
+    "100-249": { "min": 125, "max": 249 },
+    "250+": { "min": 250, "max": 499 }
+  },
+  "productionStandards": {
+    "pricingAssumesVector": true,
+    "changeFeeAfterApproval": 50,
+    "minimumsFirm": true
+  },
+  "projectConfiguration": {
+    "purposeQuestion": "What is this project for?",
+    "purposeSingleSelect": true,
+    "purposeOptions": [
+      { "value": "brand_resale", "label": "Brand / Resale" },
+      { "value": "tour_music", "label": "Tour / Music Artist" },
+      { "value": "sports_club", "label": "Sports Club" },
+      { "value": "corporate_uniform", "label": "Corporate / Uniform" },
+      { "value": "event_promo", "label": "Event / Promo" },
+      { "value": "agency_client", "label": "Agency Client" },
+      { "value": "other", "label": "Other" }
+    ],
+    "multiEventPurposeValues": ["tour_music", "sports_club"],
+    "productTypes": [
+      { "value": "t_shirts", "label": "Tees" },
+      { "value": "hoodies", "label": "Sweat / Hoodies" },
+      { "value": "hats", "label": "Hats" },
+      { "value": "corporate_wear", "label": "Corporate Wear" },
+      { "value": "work_wear", "label": "Work Wear" },
+      { "value": "tote_bags", "label": "Totes" },
+      { "value": "other_merch", "label": "Other Merch" }
+    ],
+    "garmentColourOptions": [
+      { "value": "white", "label": "White" },
+      { "value": "coloured", "label": "Coloured" }
+    ],
+    "garmentModelsByProduct": {
+      "t_shirts": [
+        { "value": "staple", "label": "AS Colour Staple Tee" },
+        { "value": "classic", "label": "AS Classic Tee" },
+        { "value": "heavy_faded", "label": "AS Heavy Faded Tee" },
+        { "value": "australian_made", "label": "Australian Made" }
+      ],
+      "hoodies": [
+        { "value": "supply_hood", "label": "AS Supply Hood" },
+        { "value": "box_hood", "label": "AS Box Hood" },
+        { "value": "made_hood", "label": "AS Made Hood" },
+        { "value": "australian_made", "label": "Australian Made" }
+      ],
+      "hats": [
+        { "value": "cap_std", "label": "Standard Cap" }
+      ],
+      "corporate_wear": [
+        { "value": "oxford", "label": "Oxford" },
+        { "value": "polo", "label": "Polo" },
+        { "value": "puffer_vest", "label": "Puffer Vest" }
+      ],
+      "work_wear": [
+        { "value": "hi_vis_polo", "label": "Hi-Vis Polo" },
+        { "value": "canvas_heavy_jacket", "label": "Canvas Heavy Jacket" }
+      ],
+      "tote_bags": [
+        { "value": "carrie", "label": "Carrie" }
+      ],
+      "other_merch": [
+        { "value": "bottles", "label": "Bottles" },
+        { "value": "pens", "label": "Pens" },
+        { "value": "stubby_coolers", "label": "Stubby Coolers" }
+      ]
+    },
+    "garmentCostByModel": {
+      "t_shirts": { "staple": 9.50, "classic": 13.50, "heavy_faded": 16.50, "australian_made": 0 },
+      "hoodies": { "supply_hood": 25.60, "box_hood": 39.50, "made_hood": 48.00, "australian_made": 0 },
+      "hats": { "cap_std": 8.50 },
+      "corporate_wear": { "oxford": 36.00, "polo": 17.00, "puffer_vest": 105.00 },
+      "work_wear": { "hi_vis_polo": 25.00, "canvas_heavy_jacket": 75.00 },
+      "tote_bags": { "carrie": 10.50 },
+      "other_merch": { "bottles": 6.50, "pens": 1.50, "stubby_coolers": 3.50 }
+    },
+    "placementOptions": [
+      { "value": "front", "label": "Front" },
+      { "value": "back", "label": "Back" },
+      { "value": "sleeves", "label": "Sleeves" }
+    ],
+    "placementPrintTypes": [
+      { "value": "screen", "label": "Screen Print (min 50)" },
+      { "value": "embroidery", "label": "Embroidery" },
+      { "value": "dtf", "label": "DTF" },
+      { "value": "unsure", "label": "Unsure" }
+    ],
+    "pricingAnchor": {
+      "garmentLabel": "AS Colour Staple",
+      "printLabel": "1 Colour Screen Print",
+      "quantity": 250,
+      "garmentCost": 9.50,
+      "printCost": 2.90,
+      "setupSpreadPerUnit": 0.25,
+      "displayLine": "Indicative from $12.40 per unit*",
+      "note": "Based on 250 units, 1 colour screen print. Final pricing depends on configuration."
+    },
+    "wizardPurposeToProjectPurpose": {},
+    "screenPrintMinQty": 50,
+    "screenPrintMaxColours": 10,
+    "screenPrintMinQtyMessage": "Screen printing minimum is 50 units.",
+    "embroideryMinQty": 50,
+    "garmentCostByProduct": {
+      "t_shirts": 9.50,
+      "hoodies": 25.60,
+      "hats": 8.50,
+      "corporate_wear": 17.00,
+      "work_wear": 25.00,
+      "tote_bags": 10.50,
+      "other_merch": 6.50
+    },
+    "screenPrintTiers": [
+      { "min": 50, "max": 124, "1colour": 5.75, "2colour": 6.35, "3colour": 6.95 },
+      { "min": 125, "max": 249, "1colour": 3.90, "2colour": 4.30, "3colour": 4.70 },
+      { "min": 250, "max": 499, "1colour": 2.90, "2colour": 3.20, "3colour": 3.50 },
+      { "min": 500, "max": 999, "1colour": 2.00, "2colour": 2.20, "3colour": 2.40 },
+      { "min": 1000, "max": null, "1colour": 1.75, "2colour": 1.90, "3colour": 2.10 }
+    ],
+    "screenPrintTiersColoured": [
+      { "min": 50, "max": 124, "1colour": 6.25, "2colour": 6.85, "3colour": 7.45 },
+      { "min": 125, "max": 249, "1colour": 4.30, "2colour": 4.70, "3colour": 5.10 },
+      { "min": 250, "max": 499, "1colour": 3.20, "2colour": 3.50, "3colour": 3.80 },
+      { "min": 500, "max": 999, "1colour": 2.20, "2colour": 2.40, "3colour": 2.60 },
+      { "min": 1000, "max": null, "1colour": 1.95, "2colour": 2.10, "3colour": 2.30 }
+    ],
+    "embroideryPricePerUnit": 8.00,
+    "setupCostPerScreen": 60,
+    "finishOptions": [
+      { "value": "fold_bag", "label": "Fold & Bag", "costPerUnit": 1.50, "flagForReview": false },
+      { "value": "neck_print", "label": "Neck Print", "costPerUnit": 0, "treatAsScreenPlacement": true, "flagForReview": false },
+      { "value": "woven_neck_labels", "label": "Woven Neck Labels", "costPerUnit": 0, "flagForReview": true },
+      { "value": "pip_tags", "label": "Pip Tags", "costPerUnit": 0, "flagForReview": true },
+      { "value": "swing_tag", "label": "Swing Tag Attachment", "costPerUnit": 0.50, "flagForReview": false },
+      { "value": "barcodes", "label": "Barcodes", "costPerUnit": 0.50, "flagForReview": false }
+    ],
+    "rushOptions": [
+      { "label": "3–5 business days", "surchargePercent": 20 },
+      { "label": "1–2 business days", "surchargePercent": 40 }
+    ],
+    "businessDaysForRushThreshold": 10,
+    "bundleDiscountPercent": 0.07,
+    "bundleMessage": "Multi-product projects benefit from bundled production efficiencies.",
+    "volumeIncentiveHigh": "You are in a high-efficiency production tier.",
+    "volumeIncentiveLow": "Increasing to 250+ units reduces your effective cost per garment.",
+    "projectSummaryNote": "Final pricing confirmed after artwork review and spec sheet approval."
+  }
+}

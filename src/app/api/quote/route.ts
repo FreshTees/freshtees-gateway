@@ -1,0 +1,42 @@
+import { NextResponse } from "next/server";
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const { name, email, phone, message, marketingConsent, context, answers, project_purpose, artworkStatus, project_products, contact_details, indicative_pricing_shown, timestamp } = body;
+
+    if (!name || !email) {
+      return NextResponse.json(
+        { error: "Name and email are required" },
+        { status: 400 }
+      );
+    }
+
+    const payload = {
+      name,
+      email,
+      phone: phone || "",
+      message: message || "",
+      marketingConsent: !!marketingConsent,
+      context,
+      answers,
+      ...(project_purpose != null && { project_purpose }),
+      ...(artworkStatus != null && { artwork_status: artworkStatus }),
+      ...(contact_details != null && { contact_details }),
+      ...(project_products != null && { project_products }),
+      ...(indicative_pricing_shown != null && { indicative_pricing_shown }),
+      timestamp: timestamp ?? new Date().toISOString(),
+      submittedAt: new Date().toISOString(),
+    };
+
+    // TODO: Send to your inbox (e.g. Elfsight webhook, Nodemailer, or VTiger API).
+    console.log("Quote request:", payload);
+
+    return NextResponse.json({ ok: true });
+  } catch {
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
+  }
+}
