@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getFlowConfig, isSmallOrder, isBulkOrder, isBulkQualified } from "@/lib/flow";
+import { getFlowConfig, getDesignToolUrl, isSmallOrder, isBulkOrder, isBulkQualified } from "@/lib/flow";
 import type { Answers } from "@/lib/flow";
 import { QuestionStep } from "./QuestionStep";
 import { SmallOrderOutcome } from "./SmallOrderOutcome";
@@ -30,11 +30,9 @@ export function Wizard() {
       ? { ...answers, [currentQuestion.id]: lastAnswerValue }
       : answers;
 
-    if (step === 1 && currentQuestion?.id === "quantity") {
-      if (isSmallOrder({ ...merged, quantity: merged.quantity || "" })) {
-        setScreen("small");
-        return;
-      }
+    if (currentQuestion?.id === "quantity" && isSmallOrder({ ...merged, quantity: merged.quantity || "" })) {
+      setScreen("small");
+      return;
     }
 
     if (step === questions.length - 1) {
@@ -90,7 +88,18 @@ export function Wizard() {
       <QuestionStep
         question={currentQuestion!}
         value={answers[currentQuestion?.id ?? ""]}
-        onAnswer={(value) => setAnswer(currentQuestion!.id, value)}
+        onAnswer={
+          currentQuestion?.type === "gate"
+            ? (value) => {
+                setAnswer("intent", value);
+                if (value === "personal") {
+                  window.location.href = getDesignToolUrl();
+                } else {
+                  goNext();
+                }
+              }
+            : (value) => setAnswer(currentQuestion!.id, value)
+        }
         onNext={goNext}
         onBack={step > 0 ? goBack : undefined}
         leftValue={currentQuestion?.type === "project_tell" ? answers.merch_tier : undefined}

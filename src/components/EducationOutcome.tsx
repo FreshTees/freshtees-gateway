@@ -25,7 +25,7 @@ export function EducationOutcome({ answers }: { answers: Answers }) {
           {content?.title ?? "Almost there"}
         </h1>
         <p className="font-body text-off-black/80 text-base whitespace-pre-line">
-          {content?.body ?? "To give you an accurate quote and make the most of a call, it helps to have print-ready artwork, an idea of placements and sizes, and a rough budget. Check out our guides, then come back when you're ready—or leave your details and we'll send a checklist and follow up."}
+          {content?.body ?? "To give you an accurate quote and make the most of a call, it helps to have print-ready artwork and an idea of placements and sizes. Check out our guides, then come back when you're ready—or leave your details and we'll send a checklist and follow up."}
         </p>
       </section>
 

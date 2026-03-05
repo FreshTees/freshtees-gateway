@@ -5,6 +5,16 @@
   "smallOrderThreshold": 50,
   "questions": [
     {
+      "id": "intent",
+      "question": "Tell us about your project",
+      "type": "gate",
+      "bodyText": "I'm looking for…",
+      "options": [
+        { "value": "personal", "label": "Something personal" },
+        { "value": "business", "label": "Something business" }
+      ]
+    },
+    {
       "id": "purpose",
       "question": "Tell us about your project",
       "type": "project_tell",
@@ -75,26 +85,15 @@
         { "value": "partially", "label": "Partially" },
         { "value": "no", "label": "No" }
       ]
-    },
-    {
-      "id": "budget",
-      "question": "Do you have a budget in mind?",
-      "type": "single",
-      "options": [
-        { "value": "yes", "label": "Yes" },
-        { "value": "no", "label": "No" },
-        { "value": "exploring", "label": "Just exploring" }
-      ]
     }
   ],
   "bulkQualifiedRules": {
     "artwork": ["yes"],
-    "placements": ["yes", "partially"],
-    "budget": ["yes"]
+    "placements": ["yes", "partially"]
   },
   "educationContent": {
     "title": "Almost there",
-    "body": "To give you an accurate quote and make the most of a call, it helps to have a few things sorted first: print-ready artwork (AI, SVG or PNG), an idea of placements and sizes, and a rough budget. We've got guides and tips on our site—check them out, then come back when you're ready. Or leave your details below and we'll send you a quick checklist and follow up when the time's right."
+    "body": "To give you an accurate quote and make the most of a call, it helps to have a few things sorted first: print-ready artwork (AI, SVG or PNG) and an idea of placements and sizes. We've got guides and tips on our site—check them out, then come back when you're ready. Or leave your details below and we'll send you a quick checklist and follow up when the time's right."
   },
   "educationTopics": {
     "artwork": {
@@ -110,13 +109,6 @@
       "body": "Knowing where the print goes and what sizes you need speeds up quoting.",
       "links": [
         { "label": "Placement guide", "url": "https://freshtees.com.au/placements" }
-      ]
-    },
-    "budget": {
-      "title": "Rough budget in mind",
-      "body": "Having a ballpark helps us suggest the right options.",
-      "links": [
-        { "label": "How pricing works", "url": "https://freshtees.com.au/pricing" }
       ]
     }
   },
