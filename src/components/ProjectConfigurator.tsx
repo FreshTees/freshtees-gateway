@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getProjectConfiguration } from "@/lib/flow";
+import { getProjectConfiguration, getGarmentColourOptionsForProduct } from "@/lib/flow";
 import {
   calculateProjectSummary,
   getVolumeIncentiveMessage,
@@ -81,8 +81,12 @@ export function ProjectConfigurator({
     back: { printType: "screen", colourCount: 1 },
     sleeves: { printType: "screen", colourCount: 1 },
   });
+  const [colourDropdownOpen, setColourDropdownOpen] = useState(false);
 
   if (!config) return null;
+
+  const colourOptions = getGarmentColourOptionsForProduct(addingProduct.productType, addingProduct.garmentModel);
+  const hasSwatches = colourOptions.some((o) => "swatchImageUrl" in o && o.swatchImageUrl);
 
   const productTypeLabel = (v: string) => config.productTypes.find((t) => t.value === v)?.label ?? v;
   const garmentModelLabel = (productType: string, modelValue: string) =>
@@ -364,15 +368,62 @@ export function ProjectConfigurator({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
                 <label className="block font-body text-xs text-off-black/70">Garment colour</label>
-                <select
-                  value={addingProduct.garmentColour}
-                  onChange={(e) => setAddingProduct((p) => ({ ...p, garmentColour: e.target.value }))}
-                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
-                >
-                  {(config.garmentColourOptions ?? []).map((o) => (
-                    <option key={o.value} value={o.value}>{o.label}</option>
-                  ))}
-                </select>
+                {hasSwatches ? (
+                  <div className="relative mt-0.5">
+                    <button
+                      type="button"
+                      onClick={() => setColourDropdownOpen((v) => !v)}
+                      className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm text-left flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 bg-white"
+                    >
+                      {(() => {
+                        const opt = colourOptions.find((o) => o.value === addingProduct.garmentColour);
+                        return opt ? (
+                          <>
+                            {"swatchImageUrl" in opt && opt.swatchImageUrl && (
+                              <img src={opt.swatchImageUrl} alt="" className="w-8 h-8 rounded object-cover border border-off-white shrink-0" />
+                            )}
+                            <span>{opt.label}</span>
+                          </>
+                        ) : (
+                          <span className="text-off-black/60">Select colour</span>
+                        );
+                      })()}
+                    </button>
+                    {colourDropdownOpen && (
+                      <>
+                        <div className="fixed inset-0 z-10" aria-hidden onClick={() => setColourDropdownOpen(false)} />
+                        <div className="absolute left-0 right-0 top-full mt-1 z-20 max-h-64 overflow-auto rounded border border-off-black/20 bg-white shadow-lg py-1">
+                          {colourOptions.map((o) => (
+                            <button
+                              key={o.value}
+                              type="button"
+                              onClick={() => {
+                                setAddingProduct((p) => ({ ...p, garmentColour: o.value }));
+                                setColourDropdownOpen(false);
+                              }}
+                              className="w-full px-3 py-2 flex items-center gap-2 text-left text-sm hover:bg-off-white/80 focus:outline-none focus:bg-off-white/80"
+                            >
+                              {"swatchImageUrl" in o && o.swatchImageUrl && (
+                                <img src={o.swatchImageUrl} alt="" className="w-8 h-8 rounded object-cover border border-off-white shrink-0" />
+                              )}
+                              <span>{o.label}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ) : (
+                  <select
+                    value={addingProduct.garmentColour}
+                    onChange={(e) => setAddingProduct((p) => ({ ...p, garmentColour: e.target.value }))}
+                    className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                  >
+                    {colourOptions.map((o) => (
+                      <option key={o.value} value={o.value}>{o.label}</option>
+                    ))}
+                  </select>
+                )}
               </div>
               <div>
                 <label className="block font-body text-xs text-off-black/70">Quantity (min 50)</label>

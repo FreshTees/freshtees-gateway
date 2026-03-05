@@ -1,4 +1,4 @@
-import { getFlowConfig } from "./flow";
+import { getFlowConfig, getGarmentColourPricingTier } from "./flow";
 
 export type PlacementConfig = {
   location: string;
@@ -58,11 +58,11 @@ function getProjectConfig() {
 export function getScreenPrintPricePerUnit(
   quantity: number,
   colourCount: number,
-  garmentColour: string
+  garmentColourTier: "white" | "coloured"
 ): number {
   const cfg = getProjectConfig();
   const tiers =
-    garmentColour === "coloured" && cfg?.screenPrintTiersColoured
+    garmentColourTier === "coloured" && cfg?.screenPrintTiersColoured
       ? cfg.screenPrintTiersColoured
       : cfg?.screenPrintTiers;
 
@@ -148,12 +148,13 @@ export function calculateProduct(
   let embroideryTotal = 0;
   let dtfTotal = 0;
 
+  const garmentColourTier = getGarmentColourPricingTier(product.productType, product.garmentModel, product.garmentColour);
   for (const p of product.placements) {
     if (p.printType === "screen") {
       const costPerUnit = getScreenPrintPricePerUnit(
         quantity,
         p.colourCount ?? 1,
-        product.garmentColour
+        garmentColourTier
       );
       const amount = costPerUnit * quantity;
       screenPrintTotal += amount;

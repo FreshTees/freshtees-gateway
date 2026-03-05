@@ -173,9 +173,47 @@
       { "value": "other_merch", "label": "Other Merch" }
     ],
     "garmentColourOptions": [
-      { "value": "white", "label": "White" },
-      { "value": "coloured", "label": "Coloured" }
+      { "value": "white", "label": "White", "pricingTier": "white" },
+      { "value": "coloured", "label": "Coloured", "pricingTier": "coloured" }
     ],
+    "asColourProductUrls": {
+      "t_shirts": { "staple": "https://www.ascolour.com.au/staple-tee-5001", "classic": "https://www.ascolour.com.au/classic-tee-5026/", "heavy_faded": "https://www.ascolour.com.au/heavy-faded-tee-5082/" },
+      "hoodies": { "supply_hood": "https://www.ascolour.com.au/supply-hood-5101/", "box_hood": "https://www.ascolour.com.au/box-hood-5171/", "made_hood": "https://www.ascolour.com.au/made-hood-5151/" },
+      "hats": { "cap_std": "https://www.ascolour.com.au/access-cap-1130/" },
+      "corporate_wear": { "oxford": "https://www.ascolour.com.au/oxford-shirt-5401/", "polo": "https://www.ascolour.com.au/chad-polo-5402/", "puffer_vest": "https://www.ascolour.com.au/puffer-vest-5592/" },
+      "work_wear": { "hi_vis_polo": "https://www.ascolour.com.au/work-safety-polo-5425f/", "canvas_heavy_jacket": "https://www.ascolour.com.au/canvas-heavy-jacket-5527/" },
+      "tote_bags": { "carrie": "https://www.ascolour.com.au/carrie-tote-1001/" }
+    },
+    "garmentColourOptionsByModel": {
+      "t_shirts": {
+        "staple": [
+          { "value": "white", "label": "White", "pricingTier": "white", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_WHITE_THUMB.jpg" },
+          { "value": "natural", "label": "Natural", "pricingTier": "white", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_NATURAL_THUMB.jpg" },
+          { "value": "black", "label": "Black", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_BLACK_THUMB.jpg" },
+          { "value": "navy", "label": "Navy", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_NAVY_THUMB.jpg" },
+          { "value": "charcoal", "label": "Charcoal", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_CHARCOAL_THUMB.jpg" },
+          { "value": "red", "label": "Red", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_RED_THUMB.jpg" },
+          { "value": "burgundy", "label": "Burgundy", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_BURGUNDY_THUMB.jpg" },
+          { "value": "forest-green", "label": "Forest Green", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_FOREST_GREEN_THUMB.jpg" },
+          { "value": "kelly-green", "label": "Kelly Green", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_KELLY_GREEN_THUMB.jpg" },
+          { "value": "midnight-blue", "label": "Midnight Blue", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_MIDNIGHT_BLUE_THUMB.jpg" },
+          { "value": "bright-royal", "label": "Bright Royal", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_BRIGHT_ROYAL_THUMB.jpg" },
+          { "value": "purple", "label": "Purple", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_PURPLE_THUMB.jpg" },
+          { "value": "pink", "label": "Pink", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_PINK_THUMB.jpg" },
+          { "value": "orange", "label": "Orange", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_ORANGE_THUMB.jpg" },
+          { "value": "yellow", "label": "Yellow", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_YELLOW_THUMB.jpg" },
+          { "value": "bone", "label": "Bone", "pricingTier": "white", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_BONE_THUMB.jpg" },
+          { "value": "ecru", "label": "Ecru", "pricingTier": "white", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_ECRU_THUMB.jpg" },
+          { "value": "light-grey", "label": "Light Grey", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_LIGHT_GREY_THUMB.jpg" },
+          { "value": "granite", "label": "Granite", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_GRANITE_THUMB.jpg" },
+          { "value": "camel", "label": "Camel", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_CAMEL_THUMB.jpg" },
+          { "value": "sand", "label": "Sand", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_SAND_THUMB.jpg" },
+          { "value": "moss", "label": "Moss", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_MOSS_THUMB.jpg" },
+          { "value": "coral", "label": "Coral", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_CORAL_THUMB.jpg" },
+          { "value": "marle-grey", "label": "Grey Marle", "pricingTier": "coloured", "swatchImageUrl": "https://cdn11.bigcommerce.com/s-lqiq2tqil5/images/stencil/160x160/uploaded_images/5001/WEB_THUMBNAILS/5001_STAPLE_TEE_GREY_MARLE_THUMB.jpg" }
+        ]
+      }
+    },
     "garmentModelsByProduct": {
       "t_shirts": [
         { "value": "staple", "label": "AS Colour Staple Tee" },

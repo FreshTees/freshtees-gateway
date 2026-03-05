@@ -153,7 +153,8 @@ export type ProjectConfiguration = {
   purposeOptions: { value: string; label: string }[];
   multiEventPurposeValues: string[];
   productTypes: { value: string; label: string }[];
-  garmentColourOptions?: { value: string; label: string }[];
+  garmentColourOptions?: { value: string; label: string; pricingTier?: "white" | "coloured" }[];
+  garmentColourOptionsByModel?: Record<string, Record<string, { value: string; label: string; pricingTier: "white" | "coloured"; swatchImageUrl?: string }[]>>;
   garmentModelsByProduct?: Record<string, { value: string; label: string }[]>;
   placementOptions?: { value: string; label: string }[];
   placementPrintTypes?: { value: string; label: string }[];
@@ -175,6 +176,38 @@ export type ProjectConfiguration = {
 export function getProjectConfiguration(): ProjectConfiguration | null {
   const data = (flowConfig as Record<string, unknown>).projectConfiguration as ProjectConfiguration | undefined;
   return data ?? null;
+}
+
+/** Resolves "white" or "coloured" for pricing from product type, model, and selected colour value. */
+export function getGarmentColourPricingTier(
+  productType: string,
+  garmentModel: string,
+  colourValue: string
+): "white" | "coloured" {
+  const pc = (flowConfig as Record<string, unknown>).projectConfiguration as {
+    garmentColourOptionsByModel?: Record<string, Record<string, { value: string; pricingTier: "white" | "coloured" }[]>>;
+    garmentColourOptions?: { value: string; pricingTier?: "white" | "coloured" }[];
+  } | undefined;
+  const byModel = pc?.garmentColourOptionsByModel?.[productType]?.[garmentModel];
+  if (byModel) {
+    const opt = byModel.find((o) => o.value === colourValue);
+    if (opt?.pricingTier) return opt.pricingTier;
+  }
+  const globalOpt = pc?.garmentColourOptions?.find((o) => o.value === colourValue);
+  if (globalOpt?.pricingTier) return globalOpt.pricingTier;
+  return colourValue === "coloured" ? "coloured" : "white";
+}
+
+/** Returns colour options for a product type + model, or global options. */
+export function getGarmentColourOptionsForProduct(
+  productType: string,
+  garmentModel: string
+): { value: string; label: string; pricingTier?: "white" | "coloured"; swatchImageUrl?: string }[] {
+  const config = getProjectConfiguration();
+  if (!config) return [];
+  const byModel = (config as { garmentColourOptionsByModel?: Record<string, Record<string, { value: string; label: string; pricingTier: "white" | "coloured"; swatchImageUrl?: string }[]>> }).garmentColourOptionsByModel?.[productType]?.[garmentModel];
+  if (byModel?.length) return byModel;
+  return (config.garmentColourOptions ?? []).map((o) => ({ ...o, pricingTier: o.pricingTier ?? ("value" in o && o.value === "coloured" ? "coloured" : "white") }));
 }
 
 export type PricingAnchor = {
