@@ -198,14 +198,14 @@ export function QualifiedOutcome({ answers }: { answers: Answers }) {
           href={calendlyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 bg-burnt-orange text-white font-body font-medium rounded-lg hover:bg-burnt-orange/90 transition-colors focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 bg-burnt-orange text-white font-body font-medium rounded-lg hover:bg-burnt-orange/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
         >
           Book a call
         </a>
         <button
           type="button"
           onClick={() => setShowQuoteForm(true)}
-          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 border-2 border-off-black text-off-black font-body font-medium rounded-lg hover:bg-off-black/5 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 border-2 border-off-black text-off-black font-body font-medium rounded-lg hover:bg-off-white/80 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
         >
           Request a quote instead
         </button>
