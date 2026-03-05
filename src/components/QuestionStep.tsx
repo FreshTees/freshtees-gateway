@@ -53,7 +53,7 @@ export function QuestionStep({
               className={`w-full text-left px-5 min-h-[44px] py-3.5 rounded-lg border-2 font-body text-base focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 ${
                 selected.has(opt.value)
                   ? "border-burnt-orange bg-burnt-orange/5 text-off-black"
-                  : "border-off-white bg-white hover:border-off-black/30 hover:bg-off-white/80 text-off-black"
+                  : "border-off-white bg-white hover:bg-off-white/80 text-off-black"
               }`}
             >
               {opt.label}
