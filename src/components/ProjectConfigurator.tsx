@@ -85,6 +85,8 @@ export function ProjectConfigurator({
   if (!config) return null;
 
   const productTypeLabel = (v: string) => config.productTypes.find((t) => t.value === v)?.label ?? v;
+  const garmentModelLabel = (productType: string, modelValue: string) =>
+    config.garmentModelsByProduct?.[productType]?.find((m) => m.value === modelValue)?.label ?? modelValue;
   const placementLabel = (v: string) => config.placementOptions?.find((p) => p.value === v)?.label ?? v;
   const finishLabel = (v: string) => config.finishOptions.find((f) => f.value === v)?.label ?? v;
   const models = config.garmentModelsByProduct?.[addingProduct.productType] ?? [];
@@ -292,7 +294,7 @@ export function ProjectConfigurator({
             {products.map((p, i) => (
               <li key={i} className="flex justify-between items-center font-body text-sm text-off-black/90 bg-white px-3 py-2 rounded">
                 <span>
-                  {productTypeLabel(p.productType)} × {p.quantity} · {p.placements.length} placement(s) · {p.finishes.length} finish(es)
+                  {garmentModelLabel(p.productType, p.garmentModel)} × {p.quantity} · {p.placements.length} placement(s) · {p.finishes.length} finish(es)
                 </span>
                 <span className="flex items-center gap-1">
                   <button type="button" onClick={() => startEditProduct(i)} className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-off-black/80 hover:text-off-black hover:underline text-xs focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded px-2">
@@ -585,7 +587,7 @@ export function ProjectConfigurator({
           <p className="font-display font-bold text-off-black">Product Breakdown</p>
           {summary.productCalculations.map((calc, i) => (
             <div key={i} className="p-3 rounded bg-white border border-off-white">
-              <p className="font-display font-bold text-off-black">{productTypeLabel(calc.productType)} × {calc.quantity}</p>
+              <p className="font-display font-bold text-off-black">{garmentModelLabel(products[i].productType, products[i].garmentModel)} × {calc.quantity}</p>
               <dl className="mt-2 space-y-1 font-body text-sm">
                 <div className="flex justify-between"><dt className="text-off-black/70">Garment Total</dt><dd>{formatCurrency(calc.garmentTotal)}</dd></div>
                 {calc.placementBreakdown.map((pb, j) => (
