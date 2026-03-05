@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getFlowConfig, getDesignToolUrl, isSmallOrder, isBulkOrder, isBulkQualified } from "@/lib/flow";
+import { getFlowConfig, isSmallOrder, isBulkOrder, isBulkQualified } from "@/lib/flow";
 import type { Answers } from "@/lib/flow";
 import { QuestionStep } from "./QuestionStep";
 import { SmallOrderOutcome } from "./SmallOrderOutcome";
@@ -93,7 +93,7 @@ export function Wizard() {
             ? (value) => {
                 setAnswer("intent", value);
                 if (value === "personal") {
-                  window.location.href = getDesignToolUrl();
+                  setScreen("small");
                 } else {
                   goNext();
                 }
