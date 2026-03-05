@@ -6,17 +6,27 @@
   "questions": [
     {
       "id": "purpose",
-      "question": "What is this for?",
-      "type": "single",
-      "options": [
-        { "value": "brand_resale", "label": "Brand / Resale" },
-        { "value": "tour_music", "label": "Tour / Music Artist" },
-        { "value": "sports_club", "label": "Sports Club" },
-        { "value": "corporate_uniform", "label": "Corporate / Uniform" },
-        { "value": "event_promo", "label": "Event / Promo" },
-        { "value": "agency_client", "label": "Agency Client" },
-        { "value": "other", "label": "Other" }
-      ]
+      "question": "Tell us about your project",
+      "type": "project_tell",
+      "bodyText": "I'm looking for…",
+      "leftColumn": {
+        "answerId": "merch_tier",
+        "options": [
+          { "value": "essentials", "label": "Essentials", "tooltip": "Most cost effective products with no special finishes. \"as is\" with prints." },
+          { "value": "premium_merch", "label": "Premium Merch", "tooltip": "Includes internal neck label prints. Whitelabel" },
+          { "value": "retail_ready", "label": "Retail Ready", "tooltip": "I want options for the works - Woven Labels, Fold & Bag, Barcoding, Etc" }
+        ]
+      },
+      "rightColumn": {
+        "answerId": "purpose",
+        "options": [
+          { "value": "brand_resale", "label": "Brand" },
+          { "value": "tour_music", "label": "Tour" },
+          { "value": "corporate_uniform", "label": "Uniform" },
+          { "value": "event_promo", "label": "Promotion" },
+          { "value": "agency_client", "label": "Event" }
+        ]
+      }
     },
     {
       "id": "quantity",

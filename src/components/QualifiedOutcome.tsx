@@ -25,8 +25,13 @@ export function QualifiedOutcome({ answers }: { answers: Answers }) {
   const calendlyUrl = getCalendlyUrl();
   const [showQuoteForm, setShowQuoteForm] = useState(false);
   const flowConfig = getFlowConfig();
-  const purposeQuestion = (flowConfig as { questions?: { id: string; options: { value: string; label: string }[] }[] }).questions?.[0];
-  const purposeLabelFromWizard = purposeQuestion?.options?.find((o) => o.value === answers.purpose)?.label;
+  const purposeQuestion = (flowConfig as {
+    questions?: { id: string; type?: string; options?: { value: string; label: string }[]; rightColumn?: { options: { value: string; label: string }[] } }[];
+  }).questions?.[0];
+  const purposeOptions = purposeQuestion?.type === "project_tell"
+    ? purposeQuestion?.rightColumn?.options
+    : purposeQuestion?.options;
+  const purposeLabelFromWizard = purposeOptions?.find((o) => o.value === answers.purpose)?.label;
   const wizardToProject = getWizardPurposeToProjectPurpose();
   const initialPurpose = answers.purpose ? (wizardToProject[answers.purpose] ?? answers.purpose) : "";
 

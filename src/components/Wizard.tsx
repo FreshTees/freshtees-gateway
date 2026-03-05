@@ -93,6 +93,8 @@ export function Wizard() {
         onAnswer={(value) => setAnswer(currentQuestion!.id, value)}
         onNext={goNext}
         onBack={step > 0 ? goBack : undefined}
+        leftValue={currentQuestion?.type === "project_tell" ? answers.merch_tier : undefined}
+        onLeftAnswer={currentQuestion?.type === "project_tell" ? (v) => setAnswer("merch_tier", v) : undefined}
       />
     </div>
   );

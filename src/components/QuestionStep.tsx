@@ -1,11 +1,15 @@
 "use client";
 
 type Option = { value: string; label: string };
+type LeftOption = { value: string; label: string; tooltip?: string };
 type Question = {
   id: string;
   question: string;
   type: string;
-  options: Option[];
+  options?: Option[];
+  bodyText?: string;
+  leftColumn?: { answerId: string; options: LeftOption[] };
+  rightColumn?: { answerId: string; options: Option[] };
 };
 
 function selectedSet(value: string): Set<string> {
@@ -19,16 +23,22 @@ export function QuestionStep({
   onAnswer,
   onNext,
   onBack,
+  leftValue,
+  onLeftAnswer,
 }: {
   question: Question;
   value: string;
   onAnswer: (v: string) => void;
   onNext: (lastAnswerValue?: string) => void;
   onBack?: () => void;
+  leftValue?: string;
+  onLeftAnswer?: (v: string) => void;
 }) {
+  const isProjectTell = question.type === "project_tell";
   const isMulti = question.type === "multi";
   const selected = isMulti ? selectedSet(value) : new Set(value ? [value] : []);
-  const canNext = isMulti ? selected.size >= 1 : value !== undefined && value !== "";
+  const canNextProjectTell = isProjectTell && !!leftValue && !!value;
+  const canNext = isProjectTell ? canNextProjectTell : isMulti ? selected.size >= 1 : value !== undefined && value !== "";
 
   const handleMultiToggle = (optValue: string) => {
     const next = new Set(selected);
@@ -39,13 +49,56 @@ export function QuestionStep({
 
   return (
     <div>
-      <h2 className="font-display font-bold text-2xl md:text-3xl text-off-black mb-8">
+      <h2 className="font-display font-bold text-2xl md:text-3xl text-off-black mb-4">
         {question.question}
       </h2>
 
-      {isMulti ? (
+      {isProjectTell && question.bodyText && (
+        <p className="font-body text-off-black/80 text-base mb-6">{question.bodyText}</p>
+      )}
+
+      {isProjectTell && question.leftColumn && question.rightColumn ? (
+        <div className="flex flex-wrap items-stretch gap-4 md:gap-6">
+          <div className="flex flex-col gap-3 flex-1 min-w-[140px]">
+            {question.leftColumn.options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                title={opt.tooltip ?? undefined}
+                onClick={() => onLeftAnswer?.(opt.value)}
+                className={`w-full text-left px-5 min-h-[44px] py-3.5 rounded-lg border-2 font-body text-base focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 ${
+                  leftValue === opt.value
+                    ? "border-burnt-orange bg-burnt-orange/5 text-off-black"
+                    : "border-off-white bg-white hover:bg-off-white/80 text-off-black"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center justify-center shrink-0 px-2 font-body text-off-black/80 text-base">
+            For a
+          </div>
+          <div className="flex flex-col gap-3 flex-1 min-w-[140px]">
+            {question.rightColumn.options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => onAnswer(opt.value)}
+                className={`w-full text-left px-5 min-h-[44px] py-3.5 rounded-lg border-2 font-body text-base focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 ${
+                  value === opt.value
+                    ? "border-burnt-orange bg-burnt-orange/5 text-off-black"
+                    : "border-off-white bg-white hover:bg-off-white/80 text-off-black"
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : isMulti ? (
         <div className="space-y-3">
-          {question.options.map((opt) => (
+          {(question.options ?? []).map((opt) => (
             <button
               key={opt.value}
               type="button"
@@ -63,7 +116,7 @@ export function QuestionStep({
         </div>
       ) : (
         <div className="space-y-3">
-          {question.options.map((opt) => (
+          {(question.options ?? []).map((opt) => (
             <button
               key={opt.value}
               type="button"
@@ -95,7 +148,7 @@ export function QuestionStep({
             Back
           </button>
         )}
-        {(question.type === "quantity" || question.type === "multi") && (
+        {(question.type === "quantity" || question.type === "multi" || question.type === "project_tell") && (
           <button
             type="button"
             onClick={() => onNext()}
