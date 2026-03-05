@@ -48,7 +48,7 @@ export function QuestionStep({
           {question.options.map((opt) => (
             <label
               key={opt.value}
-              className={`flex items-center gap-3 w-full text-left px-5 min-h-[44px] py-3.5 rounded-lg border-2 transition-all font-body text-base cursor-pointer focus-within:ring-2 focus-within:ring-burnt-orange focus-within:ring-offset-2 ${
+              className={`flex items-center gap-3 w-full text-left px-5 min-h-[44px] py-3.5 rounded-lg border-2 transition-[border-color,background-color] font-body text-base cursor-pointer ${
                 selected.has(opt.value)
                   ? "border-burnt-orange bg-burnt-orange/5 text-off-black"
                   : "border-off-white bg-white hover:border-burnt-orange/50 hover:bg-burnt-orange/5 text-off-black"
@@ -58,7 +58,7 @@ export function QuestionStep({
                 type="checkbox"
                 checked={selected.has(opt.value)}
                 onChange={() => handleMultiToggle(opt.value)}
-                className="rounded border-off-black/30 focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                className="rounded border-off-black/30 focus:ring-2 focus:ring-burnt-orange focus:ring-inset"
               />
               <span>{opt.label}</span>
             </label>
