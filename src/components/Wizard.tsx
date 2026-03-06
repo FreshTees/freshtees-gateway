@@ -7,8 +7,9 @@ import { QuestionStep } from "./QuestionStep";
 import { SmallOrderOutcome } from "./SmallOrderOutcome";
 import { EducationOutcome } from "./EducationOutcome";
 import { QualifiedOutcome } from "./QualifiedOutcome";
+import { PlacementGuidancePage } from "./PlacementGuidancePage";
 
-type Screen = "wizard" | "small" | "education" | "qualified";
+type Screen = "wizard" | "small" | "education" | "qualified" | "placement_guidance";
 
 export function Wizard() {
   const config = getFlowConfig();
@@ -25,6 +26,20 @@ export function Wizard() {
     setAnswers((prev) => ({ ...prev, [id]: value }));
   };
 
+  const finishWizard = (finalAnswers: Answers) => {
+    setOutcomeAnswers(finalAnswers);
+    setAnswers(finalAnswers);
+    if (isBulkOrder(finalAnswers)) {
+      if (isBulkQualified(finalAnswers)) {
+        setScreen("qualified");
+      } else {
+        setScreen("education");
+      }
+    } else {
+      setScreen("small");
+    }
+  };
+
   const goNext = (lastAnswerValue?: string) => {
     const merged = lastAnswerValue && currentQuestion
       ? { ...answers, [currentQuestion.id]: lastAnswerValue }
@@ -35,21 +50,23 @@ export function Wizard() {
       return;
     }
 
+    if (currentQuestion?.id === "placements") {
+      const withPlacements = { ...merged, placements: "yes" };
+      setAnswers(withPlacements);
+      if (lastAnswerValue === "no") {
+        finishWizard(withPlacements);
+        return;
+      }
+      setOutcomeAnswers(withPlacements);
+      setScreen("placement_guidance");
+      return;
+    }
+
     if (step === questions.length - 1) {
       const final = lastAnswerValue && currentQuestion
         ? { ...answers, [currentQuestion.id]: lastAnswerValue }
         : answers;
-      setOutcomeAnswers(final);
-      if (isBulkOrder(final)) {
-        if (isBulkQualified(final)) {
-          setScreen("qualified");
-        } else {
-          setScreen("education");
-        }
-      } else {
-        setScreen("small");
-      }
-      setAnswers(final);
+      finishWizard(final);
       return;
     }
 
@@ -69,6 +86,13 @@ export function Wizard() {
   }
   if (screen === "qualified") {
     return <QualifiedOutcome answers={outcomeAnswers} />;
+  }
+  if (screen === "placement_guidance") {
+    return (
+      <PlacementGuidancePage
+        onReady={() => finishWizard({ ...outcomeAnswers, placements: "yes" })}
+      />
+    );
   }
 
   return (

@@ -77,11 +77,10 @@
     },
     {
       "id": "placements",
-      "question": "Do you know placements, sizes, and specs?",
+      "question": "Would you like some guidance on placement?",
       "type": "single",
       "options": [
         { "value": "yes", "label": "Yes" },
-        { "value": "partially", "label": "Partially" },
         { "value": "no", "label": "No" }
       ]
     }
