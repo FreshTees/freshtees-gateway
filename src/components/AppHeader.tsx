@@ -1,35 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import {
-  BRAND_BY_ID,
-  DEFAULT_BRAND_ID,
-  getStoredBrandId,
-  setStoredBrandId,
-  type BrandId,
-} from "@/lib/brands";
+import { useBrand } from "@/contexts/BrandContext";
 
 export function AppHeader() {
-  const [brandId, setBrandId] = useState<BrandId>(DEFAULT_BRAND_ID);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = getStoredBrandId();
-    if (stored) setBrandId(stored);
-    setMounted(true);
-  }, []);
-
-  const setBrand = (id: BrandId) => {
-    setBrandId(id);
-    setStoredBrandId(id);
-  };
-
-  const brand = BRAND_BY_ID[brandId];
+  const { brand } = useBrand();
 
   return (
     <header className="border-b border-off-black/10 bg-off-black">
-      <div className="max-w-xl mx-auto px-6 py-6 flex items-center justify-between gap-4">
+      <div className="max-w-xl mx-auto px-6 py-6">
         <a href="/" className="inline-block shrink-0">
           {brand.logoUrl ? (
             <Image
@@ -44,28 +23,6 @@ export function AppHeader() {
             <RockItLogo accentColor={brand.accentColor} poweredBy={brand.poweredBy} />
           )}
         </a>
-
-        {mounted && (
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs text-white/60 font-body">Brand:</span>
-            <div className="flex rounded-md overflow-hidden border border-white/20">
-              {(["fresh", "rockit"] as const).map((id) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => setBrand(id)}
-                  className={`px-2.5 py-1.5 text-xs font-body transition-colors ${
-                    brandId === id
-                      ? "bg-white text-off-black"
-                      : "bg-white/10 text-white hover:bg-white/20"
-                  }`}
-                >
-                  {id === "fresh" ? "FRESH" : "Rock It"}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

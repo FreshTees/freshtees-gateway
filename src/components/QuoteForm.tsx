@@ -107,7 +107,7 @@ export function QuoteForm({
           required
           value={name}
           onChange={(e) => { setName(e.target.value); setFieldErrors((f) => ({ ...f, name: undefined })); }}
-          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         />
         {fieldErrors.name && <p className="mt-1 font-body text-sm text-red-600">{fieldErrors.name}</p>}
       </div>
@@ -121,7 +121,7 @@ export function QuoteForm({
           required
           value={email}
           onChange={(e) => { setEmail(e.target.value); setFieldErrors((f) => ({ ...f, email: undefined })); }}
-          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         />
         {fieldErrors.email && <p className="mt-1 font-body text-sm text-red-600">{fieldErrors.email}</p>}
       </div>
@@ -134,7 +134,7 @@ export function QuoteForm({
           type="tel"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="w-full min-h-[44px] px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         />
       </div>
       <div>
@@ -146,7 +146,7 @@ export function QuoteForm({
           rows={3}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="w-full px-4 py-3 border border-off-black/20 rounded-lg font-body focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         />
       </div>
 
@@ -156,11 +156,11 @@ export function QuoteForm({
             type="checkbox"
             checked={marketing}
             onChange={(e) => setMarketing(e.target.checked)}
-            className="mt-1 focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded"
+            className="mt-1 focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded"
           />
           <span className="font-body text-sm text-off-black/80">
             We'd love to keep you in the loop with tips, offers and news. You can unsubscribe anytime.{" "}
-            <a href={privacyUrl} target="_blank" rel="noopener noreferrer" className="underline text-off-black focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded">
+            <a href={privacyUrl} target="_blank" rel="noopener noreferrer" className="underline text-off-black focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded">
               Privacy policy
             </a>
           </span>
@@ -171,7 +171,7 @@ export function QuoteForm({
 
       <button
         type="submit"
-        className="flex items-center justify-center min-h-[44px] px-8 py-4 bg-off-black text-white font-body font-medium rounded-lg hover:bg-off-black/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+        className="flex items-center justify-center min-h-[44px] px-8 py-4 bg-off-black text-white font-body font-medium rounded-lg hover:bg-off-black/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
       >
         Submit
       </button>

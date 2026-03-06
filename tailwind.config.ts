@@ -12,6 +12,10 @@ const config: Config = {
         "off-black": "#231F20",
         "burnt-orange": "#F26E25",
         "off-white": "#ECEBE6",
+        accent: {
+          DEFAULT: "var(--accent)",
+          hover: "var(--accent-hover)",
+        },
       },
       fontFamily: {
         display: ["var(--font-neue-haas)", "system-ui", "sans-serif"],

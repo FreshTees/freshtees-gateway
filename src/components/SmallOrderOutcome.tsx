@@ -12,7 +12,7 @@ export function SmallOrderOutcome() {
       </section>
       <a
         href={COLLECTIONS_URL}
-        className="inline-flex items-center justify-center min-h-[44px] px-8 py-4 bg-burnt-orange text-white font-body font-medium rounded-lg hover:bg-burnt-orange/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+        className="inline-flex items-center justify-center min-h-[44px] px-8 py-4 bg-accent text-white font-body font-medium rounded-lg hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
       >
         Order Now
       </a>

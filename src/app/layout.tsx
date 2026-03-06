@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Open_Sans, DM_Sans } from "next/font/google";
+import { BrandProvider } from "@/contexts/BrandContext";
 import "./globals.css";
 
 const openSans = Open_Sans({
@@ -27,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${openSans.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen">{children}</body>
+      <body className="min-h-screen">
+        <BrandProvider>{children}</BrandProvider>
+      </body>
     </html>
   );
 }

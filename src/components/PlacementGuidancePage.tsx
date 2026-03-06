@@ -78,7 +78,7 @@ export function PlacementGuidancePage({ onReady }: { onReady: () => void }) {
           <button
             type="button"
             onClick={onReady}
-            className="px-8 py-3.5 rounded-lg font-body font-medium text-base bg-burnt-orange text-white hover:bg-burnt-orange/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+            className="px-8 py-3.5 rounded-lg font-body font-medium text-base bg-accent text-white hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
           >
             I&apos;m ready to go
           </button>

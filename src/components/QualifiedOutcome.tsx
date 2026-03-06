@@ -184,7 +184,7 @@ export function QualifiedOutcome({ answers }: { answers: Answers }) {
                   </div>
                   <div className="flex justify-between">
                     <dt className="text-off-black/80">Effective Cost Per Unit</dt>
-                    <dd className="font-display font-bold text-burnt-orange">{formatCurrency(pkg.effectiveCostPerUnit)}</dd>
+                    <dd className="font-display font-bold text-accent">{formatCurrency(pkg.effectiveCostPerUnit)}</dd>
                   </div>
                 </dl>
                 <p className="font-body text-xs text-off-black/60 mt-3 italic">{pkg.volumeNudge}</p>
@@ -227,14 +227,14 @@ export function QualifiedOutcome({ answers }: { answers: Answers }) {
           href={calendlyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 bg-burnt-orange text-white font-body font-medium rounded-lg hover:bg-burnt-orange/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 bg-accent text-white font-body font-medium rounded-lg hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         >
           Book a call
         </a>
         <button
           type="button"
           onClick={() => setShowQuoteForm(true)}
-          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 border-2 border-off-black text-off-black font-body font-medium rounded-lg hover:bg-off-white/80 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+          className="flex items-center justify-center min-h-[44px] w-full px-8 py-4 border-2 border-off-black text-off-black font-body font-medium rounded-lg hover:bg-off-white/80 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
         >
           Request a quote instead
         </button>

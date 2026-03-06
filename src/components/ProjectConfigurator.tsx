@@ -264,7 +264,7 @@ export function ProjectConfigurator({
             <button
               type="button"
               onClick={() => setPurposeEditMode(true)}
-              className="min-h-[44px] min-w-[44px] inline-flex items-center font-body text-sm text-burnt-orange hover:underline focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded px-2 -ml-2"
+              className="min-h-[44px] min-w-[44px] inline-flex items-center font-body text-sm text-accent hover:underline focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2 -ml-2"
             >
               Edit
             </button>
@@ -281,7 +281,7 @@ export function ProjectConfigurator({
                     syncPurpose(opt.value);
                     setPurposeEditMode(false);
                   }}
-                  className="border-off-black/30 focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                  className="border-off-black/30 focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 />
                 <span className="text-off-black/90">{opt.label}</span>
               </label>
@@ -301,10 +301,10 @@ export function ProjectConfigurator({
                   {garmentModelLabel(p.productType, p.garmentModel)} × {p.quantity} · {p.placements.length} placement(s) · {p.finishes.length} finish(es)
                 </span>
                 <span className="flex items-center gap-1">
-                  <button type="button" onClick={() => startEditProduct(i)} className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-off-black/80 hover:text-off-black hover:underline text-xs focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded px-2">
+                  <button type="button" onClick={() => startEditProduct(i)} className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-off-black/80 hover:text-off-black hover:underline text-xs focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2">
                     Edit
                   </button>
-                  <button type="button" onClick={() => removeProduct(i)} className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-burnt-orange hover:underline text-xs focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded px-2 -mr-2">
+                  <button type="button" onClick={() => removeProduct(i)} className="min-h-[44px] min-w-[44px] inline-flex items-center justify-center text-accent hover:underline text-xs focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded px-2 -mr-2">
                     Remove
                   </button>
                 </span>
@@ -322,7 +322,7 @@ export function ProjectConfigurator({
               setPlacementDetails({ front: { printType: "screen", colourCount: 1 }, back: { printType: "screen", colourCount: 1 }, sleeves: { printType: "screen", colourCount: 1 } });
               setShowAddForm(true);
             }}
-            className="min-h-[44px] px-4 py-2 border border-off-black/30 rounded font-body text-sm text-off-black hover:bg-off-white/50 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+            className="min-h-[44px] px-4 py-2 border border-off-black/30 rounded font-body text-sm text-off-black hover:bg-off-white/50 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
           >
             Add product
           </button>
@@ -344,7 +344,7 @@ export function ProjectConfigurator({
                       garmentModel: modelsForType[0]?.value ?? v,
                     }));
                   }}
-                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
                   {config.productTypes.map((t) => (
                     <option key={t.value} value={t.value}>{t.label}</option>
@@ -356,7 +356,7 @@ export function ProjectConfigurator({
                 <select
                   value={addingProduct.garmentModel}
                   onChange={(e) => setAddingProduct((p) => ({ ...p, garmentModel: e.target.value }))}
-                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 >
                   {models.map((m) => (
                     <option key={m.value} value={m.value}>{m.label}</option>
@@ -373,7 +373,7 @@ export function ProjectConfigurator({
                     <button
                       type="button"
                       onClick={() => setColourDropdownOpen((v) => !v)}
-                      className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm text-left flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 bg-white"
+                      className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm text-left flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 bg-white"
                     >
                       {(() => {
                         const opt = colourOptions.find((o) => o.value === addingProduct.garmentColour);
@@ -417,7 +417,7 @@ export function ProjectConfigurator({
                   <select
                     value={addingProduct.garmentColour}
                     onChange={(e) => setAddingProduct((p) => ({ ...p, garmentColour: e.target.value }))}
-                    className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                    className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                   >
                     {colourOptions.map((o) => (
                       <option key={o.value} value={o.value}>{o.label}</option>
@@ -432,13 +432,13 @@ export function ProjectConfigurator({
                   min={1}
                   value={addingProduct.quantity}
                   onChange={(e) => setAddingProduct((p) => ({ ...p, quantity: parseInt(e.target.value, 10) || 0 }))}
-                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                  className="w-full mt-0.5 min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                 />
               </div>
             </div>
 
             {addingProduct.quantity > 0 && addingProduct.quantity < screenMinQty && (
-              <p className="font-body text-xs text-burnt-orange">{minQtyMessage}</p>
+              <p className="font-body text-xs text-accent">{minQtyMessage}</p>
             )}
 
             <p className="font-body text-xs font-medium text-off-black/80 pt-1">Placements</p>
@@ -450,7 +450,7 @@ export function ProjectConfigurator({
                       type="checkbox"
                       checked={!!placementChecks[opt.value]}
                       onChange={(e) => setPlacementChecks((c) => ({ ...c, [opt.value]: e.target.checked }))}
-                      className="rounded focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                      className="rounded focus:ring-2 focus:ring-accent focus:ring-offset-2"
                     />
                     {opt.label}
                   </label>
@@ -467,7 +467,7 @@ export function ProjectConfigurator({
                               [opt.value]: { ...d[opt.value], printType: v, colourCount: d[opt.value]?.colourCount ?? 1 },
                             }));
                           }}
-                          className="ml-1 min-h-[44px] px-2 py-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                          className="ml-1 min-h-[44px] px-2 py-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                         >
                           {(config.placementPrintTypes ?? []).map((t) => (
                             <option key={t.value} value={t.value} disabled={t.value === "screen" && addingProduct.quantity < screenMinQty}>
@@ -487,7 +487,7 @@ export function ProjectConfigurator({
                                 [opt.value]: { ...d[opt.value], colourCount: parseInt(e.target.value, 10) },
                               }))
                             }
-                            className="ml-1 min-h-[44px] px-2 py-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                            className="ml-1 min-h-[44px] px-2 py-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
                           >
                             {Array.from({ length: Math.min(10, config.screenPrintMaxColours ?? 10) }, (_, i) => i + 1).map((n) => (
                               <option key={n} value={n}>{n}</option>
@@ -510,7 +510,7 @@ export function ProjectConfigurator({
                       type="checkbox"
                       checked={addingProduct.finishes.includes(o.value)}
                       onChange={() => toggleFinish(o.value)}
-                      className="rounded focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                      className="rounded focus:ring-2 focus:ring-accent focus:ring-offset-2"
                     />
                     <span>{o.label}{o.flagForReview && " (quote)"}</span>
                   </label>
@@ -522,11 +522,11 @@ export function ProjectConfigurator({
               <button
                 type="button"
                 onClick={addProduct}
-                className="min-h-[44px] px-4 py-2 bg-off-black text-white font-body text-sm rounded focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+                className="min-h-[44px] px-4 py-2 bg-off-black text-white font-body text-sm rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               >
                 {editingProductIndex !== null ? "Save changes" : "Add to project"}
               </button>
-              <button type="button" onClick={cancelAddOrEdit} className="min-h-[44px] px-4 py-2 font-body text-sm text-off-black/80 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded">
+              <button type="button" onClick={cancelAddOrEdit} className="min-h-[44px] px-4 py-2 font-body text-sm text-off-black/80 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded">
                 Cancel
               </button>
             </div>
@@ -548,7 +548,7 @@ export function ProjectConfigurator({
               setRushFlag(days < (config.businessDaysForRushThreshold ?? 10));
               onChange({ purpose, artworkStatus: value.artworkStatus, products, dueDate: d, rushFlag: days < (config.businessDaysForRushThreshold ?? 10), summary, contactDetails: contactDetails ?? undefined, contactSubmittedAt: contactSubmittedAt ?? undefined });
             }}
-            className="min-h-[44px] px-3 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+            className="min-h-[44px] px-3 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
           />
           {showRush && (
             <p className="font-body text-xs text-off-black/70 mt-2">
@@ -563,7 +563,7 @@ export function ProjectConfigurator({
           <button
             type="button"
             onClick={() => setShowContactForm(true)}
-            className="min-h-[44px] px-4 py-2 bg-burnt-orange text-white font-body text-sm font-medium rounded hover:bg-burnt-orange/90 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+            className="min-h-[44px] px-4 py-2 bg-accent text-white font-body text-sm font-medium rounded hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
           >
             Calculate indicative pricing
           </button>
@@ -579,7 +579,7 @@ export function ProjectConfigurator({
               type="text"
               value={contactForm.fullName}
               onChange={(e) => { setContactForm((f) => ({ ...f, fullName: e.target.value })); setContactFieldErrors((err) => ({ ...err, fullName: undefined })); }}
-              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               required
             />
             {contactFieldErrors.fullName && <p className="mt-1 font-body text-xs text-red-600">{contactFieldErrors.fullName}</p>}
@@ -590,7 +590,7 @@ export function ProjectConfigurator({
               type="email"
               value={contactForm.email}
               onChange={(e) => { setContactForm((f) => ({ ...f, email: e.target.value })); setContactFieldErrors((err) => ({ ...err, email: undefined })); }}
-              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               required
             />
             {contactFieldErrors.email && <p className="mt-1 font-body text-xs text-red-600">{contactFieldErrors.email}</p>}
@@ -601,7 +601,7 @@ export function ProjectConfigurator({
               type="tel"
               value={contactForm.phone}
               onChange={(e) => { setContactForm((f) => ({ ...f, phone: e.target.value })); setContactFieldErrors((err) => ({ ...err, phone: undefined })); }}
-              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               required
             />
             {contactFieldErrors.phone && <p className="mt-1 font-body text-xs text-red-600">{contactFieldErrors.phone}</p>}
@@ -612,15 +612,15 @@ export function ProjectConfigurator({
               type="text"
               value={contactForm.businessName}
               onChange={(e) => setContactForm((f) => ({ ...f, businessName: e.target.value }))}
-              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2"
+              className="w-full min-h-[44px] px-2 py-2 border border-off-black/20 rounded text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
             />
           </div>
           {contactFormError && <p className="font-body text-sm text-red-600">{contactFormError}</p>}
           <div className="flex gap-2">
-            <button type="submit" className="min-h-[44px] px-4 py-2 bg-burnt-orange text-white font-body text-sm rounded focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2">
+            <button type="submit" className="min-h-[44px] px-4 py-2 bg-accent text-white font-body text-sm rounded focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
               Submit & show pricing
             </button>
-            <button type="button" onClick={() => { setShowContactForm(false); setContactFormError(null); setContactFieldErrors({}); }} className="min-h-[44px] px-4 py-2 font-body text-sm text-off-black/80 focus:outline-none focus:ring-2 focus:ring-burnt-orange focus:ring-offset-2 rounded">
+            <button type="button" onClick={() => { setShowContactForm(false); setContactFormError(null); setContactFieldErrors({}); }} className="min-h-[44px] px-4 py-2 font-body text-sm text-off-black/80 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded">
               Cancel
             </button>
           </div>
@@ -655,14 +655,14 @@ export function ProjectConfigurator({
                   </div>
                 ))}
                 <div className="flex justify-between border-t pt-2 font-display font-bold"><dt>Estimated Product Total</dt><dd>{formatCurrency(calc.productTotal)}</dd></div>
-                <div className="flex justify-between text-burnt-orange font-display font-bold"><dt>Effective Unit Cost</dt><dd>{formatCurrency(calc.effectiveUnitCost)}</dd></div>
+                <div className="flex justify-between text-accent font-display font-bold"><dt>Effective Unit Cost</dt><dd>{formatCurrency(calc.effectiveUnitCost)}</dd></div>
               </dl>
             </div>
           ))}
 
           <div className="p-4 rounded bg-off-white/50 border border-off-black/20">
             <p className="font-display font-bold text-off-black mb-2">Estimated project total</p>
-            <p className="font-display font-bold text-2xl text-burnt-orange">{formatCurrency(summary.estimatedProjectTotal)}</p>
+            <p className="font-display font-bold text-2xl text-accent">{formatCurrency(summary.estimatedProjectTotal)}</p>
             <p className="font-body text-xs text-off-black/70 mt-2">Effective cost per unit: varies per product</p>
             <p className="font-body text-xs text-off-black/70 mt-1">{config.projectSummaryNote}</p>
           </div>

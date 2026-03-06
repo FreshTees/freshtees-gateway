@@ -103,7 +103,7 @@ export function Wizard() {
         </p>
         <div className="h-1.5 bg-off-white rounded-full overflow-hidden">
           <div
-            className="h-full bg-burnt-orange transition-all duration-300"
+            className="h-full bg-accent transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
